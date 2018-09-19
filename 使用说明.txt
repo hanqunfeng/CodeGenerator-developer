@@ -1,0 +1,28 @@
+1. 
+引入必须的jar包：
+	freemarker.jar
+	commons-lang-2.4.jar
+	generator.jar
+	ojdbc14.jar(这里引入你使用的数据库驱动即可）
+2.
+在generator.xml里面配置一下属性：
+包前缀
+java代码生成器路径，
+jsp生成路径，
+数据库驱动，
+schema，
+用户名
+密码，
+需要移除的表名前缀
+
+3.
+generator.xml放到类路径下
+template模板文件放到项目根目录下
+
+注意事项:
+1表必须有主键
+2表必须带有注释说明
+3配置数据库<entry key="jdbc.schema"></entry>属性时要大写
+3数据库账户必须是该表的创建者，刚刚发现，在配置文件里面配置的	<entry key="jdbc.schema"></entry>属性有时候不生效。
+
+随便写一个main函数 执行GeneratorJFrame f = new GeneratorJFrame();即可。

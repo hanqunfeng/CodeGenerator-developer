@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>
+		代码生成器配置文件: 
+		1.会为所有的property生成property_dir属性,如pkg=com.company => pkg_dir=com/company
+		2.可以引用环境变量: ${env.JAVA_HOME} or System.properties: ${user.home},property之间也可以相互引用
+	</comment>
+	
+	<!-- jsp namespace: web/${namespace}/${className}/list.jsp -->
+
+	<!-- 这里是配置实际项目路径 用于将生成的文件复制到对应的项目下，如果配置该属性则不会进行复制-->
+	<entry key="outRootProject">/Users/hanqf/idea_workspaces/developer</entry>
+	<entry key="outBeanDir">/bean/src/main/java/org/pyf/developer/bean/#datasource#/model/</entry>
+	<entry key="outDaoDir">/dao/src/main/java/org/pyf/developer/dao/jpa/</entry>
+	<entry key="outServiceDir">/service/src/main/java/org/pyf/developer/service/</entry>
+	<entry key="outServiceImplDir">/service-impl-jpa/src/main/java/org/pyf/developer/service/</entry>
+	<entry key="outControllerDir">/web/src/main/java/org/pyf/developer/controller/</entry>
+	<entry key="outJspDir">/web/src/main/webapp/WEB-INF/views/jsp/function/</entry>
+	<entry key="outViewsDir">/web/src/main/resources/config/views/</entry>
+	<entry key="outMessagesDir">/web/src/main/resources/config/messages/</entry>
+	<!-- 包前缀 -->
+	<entry key="namespace">org.pyf.developer</entry>
+	
+	<!-- 这里是配置输出路径 最后要带斜杠-->
+	<entry key="outRootFunction">/Users/hanqf/idea_workspaces/CodeGenerator-developer/output/</entry>
+	<!--<entry key="outRootJsp">/Users/hanqf/idea_workspaces/developer/codeGenerator/output/function/auth/jsp/</entry>-->
+
+	<!-- 需要移除的表名前缀,使用逗号进行分隔多个前缀,示例值: t_,v_ -->
+	
+	<entry key="tableRemovePrefixes">TBL_</entry>
+	<!-- 数据库用户名和密码 -->
+	<entry key="jdbc.username">cp2015</entry>
+	<entry key="jdbc.password">cp2015</entry>
+		
+		<!--下面两个schema都要配置-->
+	<!-- 数据库schema，下面的jdbc.shchema获取不到 -->
+	<entry key="jdbcSchema">cp2015db</entry>
+	
+	<!-- oracle需要指定jdbc.schema,其它数据库忽略此项配置-->
+	<!-- 要大写-->
+	<entry key="jdbc.schema">cp2015db</entry>
+	<entry key="jdbc.catalog"></entry>
+	
+	<!-- 数据库类型映射  -->
+	<entry key="java_typemapping.java.sql.Timestamp">java.util.Date</entry>
+	<entry key="java_typemapping.java.sql.Date">java.util.Date</entry>
+	<entry key="java_typemapping.java.sql.Time">java.util.Date</entry>	
+	<entry key="java_typemapping.java.lang.Byte">java.lang.Integer</entry>
+	<entry key="java_typemapping.java.lang.Short">java.lang.Integer</entry>
+	<entry key="java_typemapping.java.math.BigDecimal">java.lang.Long</entry>
+
+	<!-- H2 
+	<entry key="jdbc.url">jdbc:h2:tcp://localhost/test</entry>
+	<entry key="jdbc.driver">org.h2.Driver</entry>
+	-->	
+	<!-- Mysql -->
+	<entry key="jdbc.url">jdbc:mysql://localhost:3306/cp2015db?useUnicode=true&amp;characterEncoding=utf-8</entry>
+	<entry key="jdbc.driver">com.mysql.jdbc.Driver</entry>
+
+
+	<!-- Oracle 	jdbc:oracle:oci:@tnsname_devdb-->
+	<!--<entry key="jdbc.url">jdbc:oracle:thin:@192.168.33.188:1521:nquser</entry>-->
+	<!--<entry key="jdbc.driver">oracle.jdbc.driver.OracleDriver</entry>-->
+	
+	
+	<!-- SQLServer2000 
+	<entry key="jdbc.url">jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=[database]</entry>
+	<entry key="jdbc.driver">com.microsoft.jdbc.sqlserver.SQLServerDriver</entry>
+	-->
+	
+	<!-- SQLServer2005 
+	<entry key="jdbc.url">jdbc:sqlserver://192.168.0.98:1433;DatabaseName=[database]</entry>
+	<entry key="jdbc.driver">com.microsoft.sqlserver.jdbc.SQLServerDriver</entry>
+	-->
+
+	<!-- JTDs for SQLServer 
+	<entry key="jdbc.url">jdbc:jtds:sqlserver://192.168.0.102:1433/[database];tds=8.0;lastupdatecount=true</entry>
+	<entry key="jdbc.driver">net.sourceforge.jtds.jdbc.Driver</entry>
+	-->
+
+	<!-- PostgreSql
+	<entry key="jdbc.url">jdbc:postgresql://localhost/[database]</entry>
+	<entry key="jdbc.driver">org.postgresql.Driver</entry>
+	 -->
+	
+	<!-- Sybase
+	<entry key="jdbc.url">jdbc:sybase:Tds:localhost:5007/[database]</entry>
+	<entry key="jdbc.driver">com.sybase.jdbc.SybDriver</entry>
+	 -->
+	
+	<!-- DB2 
+	<entry key="jdbc.url">jdbc:db2://localhost:5000/[database]</entry>
+	<entry key="jdbc.driver">com.ibm.db2.jdbc.app.DB2Driver</entry>
+	-->
+	
+	<!-- HsqlDB 
+	<entry key="jdbc.url">jdbc:hsqldb:mem:generatorDB</entry>
+	<entry key="jdbc.driver">org.hsqldb.jdbcDriver</entry>
+	-->
+	
+	<!-- Derby 
+	<entry key="jdbc.url">jdbc:derby://localhost/databaseName</entry>
+	<entry key="jdbc.driver">org.apache.derby.jdbc.ClientDriver</entry>	
+	-->
+
+</properties>
