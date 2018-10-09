@@ -220,6 +220,7 @@ public class GeneratorJFrame extends JFrame {
 
 			String listHtmlFile = outRoot + "html" + File.separator + classNameInput.getText().trim() + "_list.html";
 			String editHtmlFile = outRoot + "html" + File.separator + classNameInput.getText().trim() + "_edit.html";
+			String viewNameFile = outRoot + "view-name-"+classNameInput.getText().trim() + ".properties";
 
 
 			String outBeanDir = outRootProject+GeneratorProperties.getProperty("outBeanDir")+modulNameInput.getText().trim();
@@ -239,8 +240,8 @@ public class GeneratorJFrame extends JFrame {
 
 
 
-			FileUtils.copyFileToDirectory(new File(listJspFile),new File(outJspDir));
-			FileUtils.copyFileToDirectory(new File(editJspFile),new File(outJspDir));
+
+
 			FileUtils.copyFileToDirectory(new File(modelFile),new File(outBeanDir));
 			FileUtils.copyFileToDirectory(new File(controllerFile),new File(outControllerDir));
 			FileUtils.copyFileToDirectory(new File(serviceFile),new File(outServiceDir));
@@ -249,8 +250,13 @@ public class GeneratorJFrame extends JFrame {
 			FileUtils.copyFileToDirectory(new File(messagesFile),new File(outMessagesDir));
 			FileUtils.copyFileToDirectory(new File(viewsFile),new File(outViewsDir));
 
+			//copy jsp
+			FileUtils.copyFileToDirectory(new File(listJspFile),new File(outJspDir));
+			FileUtils.copyFileToDirectory(new File(editJspFile),new File(outJspDir));
+			//copy html
 			FileUtils.copyFileToDirectory(new File(listHtmlFile),new File(outHtmlDir));
 			FileUtils.copyFileToDirectory(new File(editHtmlFile),new File(outHtmlDir));
+
 
 
 

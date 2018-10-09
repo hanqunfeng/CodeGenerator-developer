@@ -1,43 +1,22 @@
-<#assign className = table.className>
-<#assign classNameFirstLower = className?uncap_first>
-<#assign classNameLowerCase = className?lower_case>
-
-
-<#if table.idColumn.javaType =="java.lang.Integer">
-        <#assign pkJavaType = "java.lang.Long">
-<#else>
-        <#assign pkJavaType = table.idColumn.javaType>
-</#if>
-
-package ${namespace}.web.controller.${modulName};
-
-
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.annotation.Resource;
-import org.pyf.developer.utils.page.CP_Page;
-import org.pyf.developer.utils.page.CP_Sorter;
-import org.pyf.developer.web.controller.base.CP_SimpleBaseController;
-import org.pyf.developer.web.utils.log.CP_GlobalNamingConstant;
-import org.pyf.developer.web.utils.log.CP_OperateLog;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.pyf.developer.web.utils.log.CP_GlobalNamingConstant.*;
-import lombok.extern.slf4j.Slf4j;
+
+<#assign className=table.className>
+<#assign classNameFirstLower=className?uncap_first>
+<#assign classNameLowerCase=className?lower_case>
 
 
-import ${namespace}.servcie.${modulName}.${className}Service;
-import ${namespace}.bean.${datasourceName}.model.${modulName}.${className};
+<#if table.idColumn.javaType=="java.lang.Integer">
+<#assign pkJavaType="java.lang.Long">
+<#else>
+<#assign pkJavaType=table.idColumn.javaType>
+</#if>
+
+        package ${namespace}.web.controller.${modulName};
+        {namespace}.servcie.${modulName}.${className}Service;{namespace}.bean.${datasourceName}.model.${modulName}.${className};
 
 
 /**

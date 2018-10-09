@@ -5,31 +5,24 @@ package org.pyf.developer.web.controller.auth;
 
 
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
+import org.pyf.developer.bean.one.model.auth.SystemLogger;
+import org.pyf.developer.servcie.auth.SystemLoggerService;
 import org.pyf.developer.utils.page.CP_Page;
 import org.pyf.developer.utils.page.CP_Sorter;
 import org.pyf.developer.web.controller.base.CP_SimpleBaseController;
-import org.pyf.developer.web.utils.log.CP_GlobalNamingConstant;
 import org.pyf.developer.web.utils.log.CP_OperateLog;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.pyf.developer.web.utils.log.CP_GlobalNamingConstant.*;
-import lombok.extern.slf4j.Slf4j;
-
-
-import org.pyf.developer.servcie.auth.SystemLoggerService;
-import org.pyf.developer.bean.one.model.auth.SystemLogger;
 
 
 /**
