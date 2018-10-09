@@ -183,9 +183,12 @@ public class GeneratorJFrame extends JFrame {
 			// $\{ --> ${
 			fixJsp(GeneratorProperties.getProperty("outRootFunction") +File.separator+modulNameInput.getText().trim()+File.separator+"jsp"+File.separator+classNameInput.getText().trim()+"_list.jsp");
 			fixJsp(GeneratorProperties.getProperty("outRootFunction") +File.separator+modulNameInput.getText().trim()+File.separator+"jsp"+File.separator+classNameInput.getText().trim()+"_edit.jsp");
+
+			fixJsp(GeneratorProperties.getProperty("outRootFunction") +File.separator+modulNameInput.getText().trim()+File.separator+"html"+File.separator+classNameInput.getText().trim()+"_list.html");
+			fixJsp(GeneratorProperties.getProperty("outRootFunction") +File.separator+modulNameInput.getText().trim()+File.separator+"html"+File.separator+classNameInput.getText().trim()+"_edit.html");
 			messageArea.append("Generate Successfully!");
 
-			copyFileToProject();
+			//copyFileToProject();
 
 			JOptionPane.showMessageDialog(this, "代码已生成！");
 		} catch (Exception e) {
@@ -215,6 +218,10 @@ public class GeneratorJFrame extends JFrame {
 			String viewsFile = outRoot + "view" + File.separator + "views_" + classNameInput.getText().trim() + ".properties";
 
 
+			String listHtmlFile = outRoot + "html" + File.separator + classNameInput.getText().trim() + "_list.html";
+			String editHtmlFile = outRoot + "html" + File.separator + classNameInput.getText().trim() + "_edit.html";
+
+
 			String outBeanDir = outRootProject+GeneratorProperties.getProperty("outBeanDir")+modulNameInput.getText().trim();
 			outBeanDir = outBeanDir.replace("#datasource#",datasourceNameInput.getText().trim());
 			String outDaoDir = outRootProject+GeneratorProperties.getProperty("outDaoDir")+datasourceNameInput.getText().trim()+File.separator+modulNameInput.getText().trim();
@@ -224,6 +231,9 @@ public class GeneratorJFrame extends JFrame {
 			String outJspDir = outRootProject+GeneratorProperties.getProperty("outJspDir")+modulNameInput.getText().trim();
 			String outViewsDir = outRootProject+GeneratorProperties.getProperty("outViewsDir")+modulNameInput.getText().trim();
 			String outMessagesDir = outRootProject+GeneratorProperties.getProperty("outMessagesDir")+modulNameInput.getText().trim();
+
+
+			String outHtmlDir = outRootProject+GeneratorProperties.getProperty("outHtmlDir")+modulNameInput.getText().trim();
 
 
 
@@ -238,6 +248,9 @@ public class GeneratorJFrame extends JFrame {
 			FileUtils.copyFileToDirectory(new File(daoFile),new File(outDaoDir));
 			FileUtils.copyFileToDirectory(new File(messagesFile),new File(outMessagesDir));
 			FileUtils.copyFileToDirectory(new File(viewsFile),new File(outViewsDir));
+
+			FileUtils.copyFileToDirectory(new File(listHtmlFile),new File(outHtmlDir));
+			FileUtils.copyFileToDirectory(new File(editHtmlFile),new File(outHtmlDir));
 
 
 
@@ -260,7 +273,7 @@ public class GeneratorJFrame extends JFrame {
 			StringBuffer buf = new StringBuffer();  
 			while((line = jsp.readLine()) != null){
 				//$\\{ --> \\${，第一个\是转意，实际上是$\{ --> \${
-				buf.append(line.replaceAll("\\u0024\\\\\\u007B", "\\${")).append("\n");
+				buf.append(line.replaceAll("\\u0024\\\\\\u007B", "\\${").replaceAll("\\u0023\\\\\\u007B", "\\#{")).append("\n");
 			}
 			bw = new BufferedWriter(new FileWriter(filePath));
 			bw.write(buf.toString());

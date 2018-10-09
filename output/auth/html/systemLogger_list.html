@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header th:replace="common/model::header"></header>
+
+<body>
+<div th:replace="common/model::script"></div>
+
+<div class="row" style="margin:0px;">
+	<div class="col-sm-12" style="padding:0px;">
+		<div class="panel panel-primary" style="margin-bottom:1px;">
+
+
+			<div class="panel-heading">
+				<h3 class="panel-title"><i class="icon-list"></i> [[#{systemLogger.htitle.list}]]</h3>
+			</div>
+			<div class="panel-body" style="background-color:#EEEEEE;padding:8px;">
+				<link th:href="@{/resource/css/netqin.css}" rel="stylesheet"/>
+				<script type="text/javascript"
+						th:src="@{|/resource/js/i18n/netqin.list.#{locale}.js|}"></script>
+
+				<script type="text/javascript">
+                    jQuery(function ($) {
+                    });
+				</script>
+
+
+<div class="panel panel-info ">
+	<div class="panel-heading" style="margin-bottom: 0px;">
+		<h3 class="panel-title">
+			<i class="icon-search"></i>
+			[[#{common.form.search}]]
+		</h3>
+	</div>
+	<div class="panel-body">
+<form id="queryForm" name="queryForm"
+	  th:action="@{/auth/systemLogger/list.do}" method="POST">
+			<table width="100%" class="table table-padding-4 borderless" style="border: 0px; padding: 0px;margin:0px;"
+				cellspacing="100">
+		<tr>
+		<td class="text-right" width="10%" th:text="#{systemLogger.id}"></td>
+			<td><input type="text" class="input-sm" id="id" name="id"
+						autocomplete=off th:value="${queryBean.id}"
+						th:placeholder="#{systemLogger.id.placeholder}">
+					</td>
+		</tr>
+		<tr>	
+		<td  class="right">
+		<input type="hidden" name="sortName" id="sortName" th:value="${sorter.sortName}" />
+		<input type="hidden" name="sortType" id="sortType" th:value="${sorter.sortType}" />
+		<button type="submit" id="submitbtn" class="btn btn-default btn-sm" th:text="#{common.submit}">
+		</button>
+		</td>
+	</tr>
+</table>
+</form>
+</div>
+</div>
+<a th:href="@{/auth/systemLogger/edit.do}" class="btn btn-success btn-xs no-hover" th:text="#{common.create}"></a>
+<button class="btn btn-danger btn-xs" id="delete" th:text="#{common.delete}">
+
+</button>
+
+<form id="resultForm" name="resultsForm" th:action="@{/auth/systemLogger/delete.do}" method="POST">
+<div class="table-responsive">
+<table id="resultsTable"
+			class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+		<th><input type="checkbox" name="selectAll" id="selectAll" th:text="#{common.choose}"/></th>
+		<th class="header" ><span
+				style="display: none;">id</span>[[#{systemLogger.id}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logClientIp</span>[[#{systemLogger.logClientIp}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logUri</span>[[#{systemLogger.logUri}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logType</span>[[#{systemLogger.logType}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logMethod</span>[[#{systemLogger.logMethod}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logParamData</span>[[#{systemLogger.logParamData}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logSessionId</span>[[#{systemLogger.logSessionId}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logTime</span>[[#{systemLogger.logTime}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logReturmTime</span>[[#{systemLogger.logReturmTime}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logReturnData</span>[[#{systemLogger.logReturnData}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logHttpStatusCode</span>[[#{systemLogger.logHttpStatusCode}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logTimeConsuming</span>[[#{systemLogger.logTimeConsuming}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logDesc</span>[[#{systemLogger.logDesc}]]<i
+						class="icon-sort"></i></th>
+			
+		<th class="header" ><span
+				style="display: none;">logUser</span>[[#{systemLogger.logUser}]]<i
+						class="icon-sort"></i></th>
+			
+		<th th:text="#{common.operate}"></th>
+		</tr>
+	</thead>
+	<tbody>
+
+					<tr th:each="item:${results}">
+						<td>
+							<input type="checkbox" name="ids" th:value="${item.id}" class="noborder"/>
+					</td>
+			<td th:text="${item.id}"></td>
+			 <td th:text="${item.logClientIp}"></td>
+			 <td th:text="${item.logUri}"></td>
+			 <td th:text="${item.logType}"></td>
+			 <td th:text="${item.logMethod}"></td>
+			 <td th:text="${item.logParamData}"></td>
+			 <td th:text="${item.logSessionId}"></td>
+		<td>
+			[[${#dates.format(item.logTime, 'yyyy-MM-dd')}]]
+		</td>
+			 <td th:text="${item.logReturmTime}"></td>
+			 <td th:text="${item.logReturnData}"></td>
+			 <td th:text="${item.logHttpStatusCode}"></td>
+			 <td th:text="${item.logTimeConsuming}"></td>
+			 <td th:text="${item.logDesc}"></td>
+			 <td th:text="${item.logUser}"></td>
+						<td>
+						<a th:href="@{/auth/systemLogger/edit.do(id=${item.id})}"
+							class="btn btn-info btn-minier" th:text="#{common.edit}"></a>
+						</td>
+					</tr>
+
+	</tbody>
+</table>
+	</div>
+</form>
+
+				<div>
+					<div>
+						<div class="row" style="margin:0px;">
+							<div th:replace="common/pagination::pagination"></div>
+						</div>
+						<!-- /.table-responsive -->
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
+

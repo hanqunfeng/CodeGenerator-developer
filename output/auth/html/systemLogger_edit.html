@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<header th:replace="common/model::header"></header>
+
+<body>
+<div th:replace="common/model::script"></div>
+
+<div class="row" style="margin:0px;">
+	<div class="col-sm-12" style="padding:0px;">
+		<div class="panel panel-primary" style="margin-bottom:1px;">
+
+
+			<div class="panel-heading">
+				<h3 class="panel-title"><i class="icon-list"></i> [[#{systemLogger.htitle.edit}]]</h3>
+			</div>
+			<div class="panel-body" style="background-color:#EEEEEE;padding:8px;">
+				<link th:href="@{/resource/css/datepicker.css}"
+					  rel="stylesheet"/>
+				<link th:href="@{/resource/css/jquery.validator.css}"
+					  rel="stylesheet"/>
+				<script type="text/javascript"
+						th:src="@{/resource/js/jquery.validator.js}"></script>
+				<script type="text/javascript"
+						th:src="@{/resource/js/bootstrap-datepicker.min.js}"></script>
+				<script type="text/javascript"
+						th:src="@{|/resource/js/i18n/jquery.validator.#{locale}.js|}"></script>
+				<script type="text/javascript"
+						th:src="@{|/resource/js/i18n/datepicker/bootstrap-datepicker.#{locale}.js|}"></script>
+				<script type="text/javascript">
+                    $(function () {
+
+                        $('#contentForm').validator({
+                            theme: "yellow_right"
+                        });
+
+
+                    });
+				</script>
+<div class="highlight">
+	<form class="form-horizontal" role="form" th:action="@{|/auth/systemLogger/${method}.do|}" id="contentForm" method="post">
+
+	<input type="hidden" id="id" name="id"  style="width:220px;" th:value="${dataObj.id}" th:if="${dataObj.id != null }"/>
+
+<div class="form-group ">
+	<label for="logClientIp" class="col-sm-3 control-label">[[#{systemLogger.logClientIp}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logClientIp" id="logClientIp"
+			   th:placeholder="#{systemLogger.logClientIp.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logClientIp}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logUri" class="col-sm-3 control-label">[[#{systemLogger.logUri}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logUri" id="logUri"
+			   th:placeholder="#{systemLogger.logUri.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logUri}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logType" class="col-sm-3 control-label">[[#{systemLogger.logType}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logType" id="logType"
+			   th:placeholder="#{systemLogger.logType.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logType}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logMethod" class="col-sm-3 control-label">[[#{systemLogger.logMethod}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logMethod" id="logMethod"
+			   th:placeholder="#{systemLogger.logMethod.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logMethod}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logParamData" class="col-sm-3 control-label">[[#{systemLogger.logParamData}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logParamData" id="logParamData"
+			   th:placeholder="#{systemLogger.logParamData.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logParamData}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logSessionId" class="col-sm-3 control-label">[[#{systemLogger.logSessionId}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logSessionId" id="logSessionId"
+			   th:placeholder="#{systemLogger.logSessionId.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logSessionId}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logTime" class="col-sm-3 control-label">[[#{systemLogger.logTime}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logTime" id="logTime"
+			   th:placeholder="#{systemLogger.logTime.placeholder}" data-rule="required" style="width:220px;" th:value="${#dates.format(dataObj.logTime, 'yyyy-MM-dd')}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logReturmTime" class="col-sm-3 control-label">[[#{systemLogger.logReturmTime}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logReturmTime" id="logReturmTime"
+			   th:placeholder="#{systemLogger.logReturmTime.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logReturmTime}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logReturnData" class="col-sm-3 control-label">[[#{systemLogger.logReturnData}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logReturnData" id="logReturnData"
+			   th:placeholder="#{systemLogger.logReturnData.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logReturnData}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logHttpStatusCode" class="col-sm-3 control-label">[[#{systemLogger.logHttpStatusCode}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logHttpStatusCode" id="logHttpStatusCode"
+			   th:placeholder="#{systemLogger.logHttpStatusCode.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logHttpStatusCode}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logTimeConsuming" class="col-sm-3 control-label">[[#{systemLogger.logTimeConsuming}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logTimeConsuming" id="logTimeConsuming"
+			   th:placeholder="#{systemLogger.logTimeConsuming.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logTimeConsuming}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logDesc" class="col-sm-3 control-label">[[#{systemLogger.logDesc}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logDesc" id="logDesc"
+			   th:placeholder="#{systemLogger.logDesc.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logDesc}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+<div class="form-group ">
+	<label for="logUser" class="col-sm-3 control-label">[[#{systemLogger.logUser}]]:<span class="red">*</span></label>
+	<div class="col-sm-4">
+		<input type="text" class="input-sm" name="logUser" id="logUser"
+			   th:placeholder="#{systemLogger.logUser.placeholder}" data-rule="required" style="width:220px;" th:value="${dataObj.logUser}">
+	</div>
+	<div class="col-sm-5"></div>
+</div>
+
+
+		<div class="form-group">
+
+			<div class="col-sm-offset-3 col-sm-1 text-right">
+
+				<button type="submit" class="btn btn-primary" th:text="#{common.submit}">
+
+				</button>
+			</div>
+
+			<div class="col-sm-8 text-left">
+				<a th:href="@{/auth/systemLogger/list.do}" class="btn" th:text="#{common.back}"></a>
+			</div>
+		</div>
+
+	</form>
+</div>
+

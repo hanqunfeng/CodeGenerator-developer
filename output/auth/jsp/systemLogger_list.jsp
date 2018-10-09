@@ -18,7 +18,7 @@
 	</div>
 	<div class="panel-body">
 <form id="queryForm" name="queryForm"
-		action="${_contextPath}/test/systemLogger/list.do" method="POST">
+		action="${_contextPath}/auth/systemLogger/list.do" method="POST">
 			<table width="100%" class="table table-padding-4 borderless" style="border: 0px; padding: 0px;margin:0px;"
 				cellspacing="100">
 		<tr>
@@ -41,7 +41,7 @@
 </form>
 </div>
 </div>
-<a href="${_contextPath}/test/systemLogger/edit.do" class="btn btn-success btn-xs no-hover"><fmt:message
+<a href="${_contextPath}/auth/systemLogger/edit.do" class="btn btn-success btn-xs no-hover"><fmt:message
 		key="common.create" /></a>
 <button class="btn btn-danger btn-xs" id="delete">
 	<fmt:message key="common.delete" />
@@ -135,7 +135,7 @@
 			 <td >${item.logDesc}</td>
 			 <td >${item.logUser}</td>
 						<td>
-						<a href="${_contextPath}/test/systemLogger/edit.do?id=${item.id}"
+						<a href="${_contextPath}/auth/systemLogger/edit.do?id=${item.id}"
 							class="btn btn-info btn-minier"><fmt:message
 									key="common.edit" /></a>
 						</td>

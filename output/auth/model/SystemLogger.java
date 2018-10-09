@@ -1,5 +1,5 @@
 
-package org.pyf.developer.bean.one.model.test;
+package org.pyf.developer.bean.one.model.auth;
 
 
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * Description: <SystemLogger vo>. <br>
  * 
- * generate time:2018-9-18 20:09:23
+ * generate time:2018-10-9 15:29:49
  * 
  * @author generator-cp-web
  * @version V1.0

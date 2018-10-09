@@ -1,7 +1,7 @@
 
 
 
-package org.pyf.developer.web.controller.test;
+package org.pyf.developer.web.controller.auth;
 
 
 
@@ -28,16 +28,16 @@ import static org.pyf.developer.web.utils.log.CP_GlobalNamingConstant.*;
 import lombok.extern.slf4j.Slf4j;
 
 
-import org.pyf.developer.servcie.test.SystemLoggerService;
-import org.pyf.developer.bean.one.model.test.SystemLogger;
+import org.pyf.developer.servcie.auth.SystemLoggerService;
+import org.pyf.developer.bean.one.model.auth.SystemLogger;
 
 
 /**
- * Description: <test模块controller >. <br>
+ * Description: <auth模块controller >. <br>
  * <p>
  * <基本的crud>
  * </p>
- * generate time:2018-9-18 20:09:23
+ * generate time:2018-10-9 15:29:48
  *
  * @author generator-cp-web
  * @version V1.0
@@ -45,7 +45,7 @@ import org.pyf.developer.bean.one.model.test.SystemLogger;
 
 @Controller
 @Slf4j
-@RequestMapping("/test")
+@RequestMapping("/auth")
 public class SystemLoggerController extends CP_SimpleBaseController{
 
 
@@ -83,7 +83,7 @@ public class SystemLoggerController extends CP_SimpleBaseController{
 		List<SystemLogger> 	results = systemLoggerService.findByPage(page,sorter,systemLogger);
 			model.addAttribute("results", results);
 			log.info("[SystemLoggerController:handleList][end]");
-		return "systemLogger_list_view";
+		return getView("systemLogger_list_view");
 
 	}
 	/**
@@ -108,7 +108,7 @@ public class SystemLoggerController extends CP_SimpleBaseController{
 		}
 		model.addAttribute("dataObj",systemLogger);
 		log.info("[SystemLoggerController:handleEdit][end]");
-		return "systemLogger_edit_view";
+		return getView("systemLogger_edit_view");
 	}
 	/**
 	 *
@@ -132,11 +132,11 @@ public class SystemLoggerController extends CP_SimpleBaseController{
 			log.error(e.getMessage());
 			model.addAttribute("messageSattus","error");
 			model.addAttribute("message","message.operation.failed");
-			return "systemLogger_edit_view";
+			return getView("systemLogger_edit_view");
 		}
 		model.addAttribute("message","message.operation.success");
 		log.info("[SystemLoggerController:handleUpdate][end]");
-		return "systemLogger_edit_view";
+		return getView("systemLogger_edit_view");
 	}
 
 	/**
@@ -163,11 +163,11 @@ public class SystemLoggerController extends CP_SimpleBaseController{
 			log.error(e.getMessage());
 			model.addAttribute("messageSattus","error");
 			model.addAttribute("message","message.operation.failed");
-			return "systemLogger_edit_view";
+			return getView("systemLogger_edit_view");
 		}
 		redirectAttrs.addFlashAttribute("message","message.operation.success");
 		log.info("[SystemLoggerController:handleAdd][end]");
-		return "redirect:/systemLogger/edit.do?id="+systemLogger.getId();
+		return "redirect:/auth/systemLogger/edit.do?id="+systemLogger.getId();
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class SystemLoggerController extends CP_SimpleBaseController{
 		}
 		redirectAttrs.addFlashAttribute("message","message.operation.success");
 		log.info("[SystemLoggerController:handleDelete][end]");
-		return "redirect:/systemLogger/list.do";
+		return "redirect:/auth/systemLogger/list.do";
 	}
 
 }

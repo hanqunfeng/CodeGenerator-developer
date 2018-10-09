@@ -19,6 +19,9 @@
 	<entry key="outJspDir">/web/src/main/webapp/WEB-INF/views/jsp/function/</entry>
 	<entry key="outViewsDir">/web/src/main/resources/config/views/</entry>
 	<entry key="outMessagesDir">/web/src/main/resources/config/messages/</entry>
+	<entry key="outHtmlDir">/web/src/main/resources/templates/function/</entry>
+
+
 	<!-- °üÇ°×º -->
 	<entry key="namespace">org.pyf.developer</entry>
 	

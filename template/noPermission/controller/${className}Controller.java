@@ -91,7 +91,7 @@ public class ${className}Controller extends CP_SimpleBaseController{
 		List<${className}> 	results = ${classNameFirstLower}Service.findByPage(page,sorter,${classNameFirstLower});
 			model.addAttribute("results", results);
 			log.info("[${className}Controller:handleList][end]");
-		return "${classNameFirstLower}_list_view";
+		return getView("${classNameFirstLower}_list_view");
 
 	}
 	/**
@@ -121,7 +121,7 @@ public class ${className}Controller extends CP_SimpleBaseController{
 		}
 		model.addAttribute("dataObj",${classNameFirstLower});
 		log.info("[${className}Controller:handleEdit][end]");
-		return "${classNameFirstLower}_edit_view";
+		return getView("${classNameFirstLower}_edit_view");
 	}
 	/**
 	 *
@@ -145,11 +145,11 @@ public class ${className}Controller extends CP_SimpleBaseController{
 			log.error(e.getMessage());
 			model.addAttribute("messageSattus","error");
 			model.addAttribute("message","message.operation.failed");
-			return "${classNameFirstLower}_edit_view";
+			return getView("${classNameFirstLower}_edit_view");
 		}
 		model.addAttribute("message","message.operation.success");
 		log.info("[${className}Controller:handleUpdate][end]");
-		return "${classNameFirstLower}_edit_view";
+		return getView("${classNameFirstLower}_edit_view");
 	}
 
 	/**
@@ -176,11 +176,11 @@ public class ${className}Controller extends CP_SimpleBaseController{
 			log.error(e.getMessage());
 			model.addAttribute("messageSattus","error");
 			model.addAttribute("message","message.operation.failed");
-			return "${classNameFirstLower}_edit_view";
+			return getView("${classNameFirstLower}_edit_view");
 		}
 		redirectAttrs.addFlashAttribute("message","message.operation.success");
 		log.info("[${className}Controller:handleAdd][end]");
-		return "redirect:/${classNameFirstLower}/edit.do?id="+${classNameFirstLower}.getId();
+		return "redirect:/${modulName}/${classNameFirstLower}/edit.do?id="+${classNameFirstLower}.getId();
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class ${className}Controller extends CP_SimpleBaseController{
 		}
 		redirectAttrs.addFlashAttribute("message","message.operation.success");
 		log.info("[${className}Controller:handleDelete][end]");
-		return "redirect:/${classNameFirstLower}/list.do";
+		return "redirect:/${modulName}/${classNameFirstLower}/list.do";
 	}
 
 }
